@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clothing Page</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Playfair+Display&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f4e6;
+            color: #3e2a2a;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }   
+        header {
+            background-color: #d3c2b0;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+      
+        header h2 {
+            font-size: 30px;
+            font-weight: normal;
+            margin: 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .header-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .header-icons i:hover {
+            color: #e1b28b;
+        }
+        
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    background-image: url('https://i.pinimg.com/736x/8c/bb/3a/8cbb3ac2dcbc82197608bb09610e86cf.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust overlay transparency */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure text appears above the overlay */
+    max-width: 80%;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    align:Right;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.hero-buttons .btn:hover {
+    background-color: #d9534f;
+    transform: scale(1.1);
+}
+.hero-buttons .btn {
+    background-color: #e1b28b;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    background-color: #d9534f;
+    transform: scale(1.1);
+}
+
+.section-banner {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.banner-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            color: white;
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            overflow-y: auto;
+            padding: 20px;
+            z-index: 1000;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #5e3c23;
+            font-size: 1rem;
+            padding: 5px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #a67856;
+        }
+
+        .active {
+            color: #cfa582;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+        }
+        .category-section {
+            margin-bottom: 50px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .category-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e1b28b;
+            padding-bottom: 10px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #e1b28b;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .product-image {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-info {
+            margin-top: 10px;
+        }
+        .product-name {
+            
+            font-size: 20px;
+            font-weight: bold;
+            color: #3e2a2a;
+        }
+        .product-price {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-price .original-price {
+    text-decoration: line-through;
+    color: #a0a0a0;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.product-price .sale-price {
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 18px;
+}
+        .product-sizes label {
+            margin-right: 10px;
+            font-weight: 400;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e1b28b;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+            animation: bounce 2s infinite;
+        }
+        .sale {
+            background-color: red;
+        }
+        .btn-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            background-color: #3e2a2a;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #e1b28b;
+           color: #3e2a2a;
+           transform: scale(1.1);
+        }
+
+        footer {
+    background-color: #d3c2b0;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+        }
+       
+footer .social-icons i {
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+footer .social-icons i:hover {
+    color: #e1b28b;
+}
+
+        @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+        @media screen and (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo"><strong>ShopSphere</strong></div>
+    <center><h2><b>SHOE COLLECTION</b></h2></center>
+    <div class="header-icons">
+        <i class="fa fa-search"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-shopping-cart"></i>
+    </div>
+</header>
+<div class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Welcome to ShopSphere</h1>
+        <p class="hero-subtitle">Discover the latest trends in fashion and lifestyle</p>
+        <div class="hero-buttons">
+            <a href="#shop-now" class="btn">Shop Now</a>
+            <a href="#categories" class="btn">Explore Categories</a>
+        </div>
+    </div>
+</div>
+
+<div class="sidebar">
+    <ul>
+        <li><a href="#Sneakers/Canvas">Sneakers/Canvas</a></li>
+        <li><a href="#Khusa">Khusa</a></li>
+        <li><a href="#Pumps">Pumps</a></li>
+        <li><a href="#Slippers">Slippers</a></li>
+        <li><a href="#Sandal">Sandals</a></li>
+        <li><a href="#Heels">Heels</a></li>
+        <li><a href="#Loafers">Loafers</a></li>
+        <li><a href="#Boots">Boots</a></li>
+        <li><a href="#Sport Shoes">Sport Shoes</a></li>
+        <li><a href="#Wedges">Wedges</a></li>  
+    </ul>
+</div>
+
+
+<div class="content">
+    <div class="category-section" id="Sneakers/Canvas">
+        <div class="category-header"><center><h2>Sneakers/Canvas</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/a5/f3/11/a5f311e846cb1b6aa24172a05249ed0a.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Chic Canvas</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/dd/71/60/dd71600bef4b6d48125de6aef0bf858d.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Retro  Style Chunky Canvas</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="https://i.pinimg.com/736x/7a/ee/cd/7aeecd69a936c6bdf53fffc6aba8d0c5.jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Vintage Elegant Luxe Canvas</div>
+                    <div class="product-price">PKR 14,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+           </div> 
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/2f/9d/0f/2f9d0f6b2e2375cb8b58a0091fe00432.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Elegant Sneaker</div>
+                    <div class="product-price">PKR 15,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/ba/5a/38/ba5a38f3f41a7d97a2bd8a55f4a9f5cc.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Casual Comfortable Low Top Sneakers</div>
+                    <div class="product-price">PKR 24,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/73/99/f0/7399f0caf6d5171ae6c4be4b0c99ed93.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Classic Sneakers</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <p>Sold: 100 | Remaining: 80</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/ef/72/09/ef7209c916394fb36b45bc970cc95793.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Classic Sneakers</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/e3/38/73/e338734a170b483cf25be70527411c4b.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Classic Sneakers </div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 14,999</div>
+                       
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/fc/96/4e/fc964efac35e66a5dee1f0712e354ad7.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">classic Sneakers</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 17,999</span>
+                        <span class="sale-price">PKR 14,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+
+
+
+    <div class="category-section" id="Khusa"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><strong><h2>Khusa</h2></strong></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/cf/d5/fa/cfd5fa6e9e1c1618d660037d9582c327.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Elegant Khusa</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/8b/f2/68/8bf26886facbc6d50d60b830ba9e511d.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Elegant Floral Khusa</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                   <div class="btn-group">
+    <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="https://i.pinimg.com/736x/0f/93/8d/0f938d5b0d47d925aff27d01954306d6.jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Biege Embroided Khusa</div>
+                    <div class="product-price">PKR 4,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/eb/6c/a9/eb6ca9add98a23616359f5e0338ec456.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Seagreen Khusa</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/e8/bf/85/e8bf85b8ddd78f6893bc4a08ac6296b3.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Pink Khusa</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/69/95/e7/6995e702d76256640c9117c3e1779a9c.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/45/78/1b/45781b3e3d3b0f5c019eabe1ebe10817.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">FChic Luxe Khusa</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/6c/5b/72/6c5b7203815eda3626755eef37bbe68a.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Floral Khusa</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 4,999</div>
+                       
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/59/2a/a6/592aa6716e6b2f049ccaa9adb4751213.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe White Khusa</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/b1/ae/52/b1ae5264da2657c407f92d1e9fbb0a64.jpg" alt= "Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Khusa</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>    
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/27/37/78/273778ae9da476b9af32e7d8c36ef510.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Khusa</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/cc/61/1f/cc611f01a0f834a17aa7110fdd486b65.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Khusa</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+           
+    <div class="category-section" id="Pumps" data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Pumps</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+          <img src="https://i.pinimg.com/736x/7c/24/04/7c24046e8b7ff2047e56ff7fb757b3ae.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Leather Block Shoes</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="https://i.pinimg.com/736x/6d/fb/36/6dfb363ec6f701cdea442a3642710fe6.jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Elegant Shoes </div>
+                    <div class="product-price">PKR 4,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/34/3c/d8/343cd86c6d6c792b6c8df47f73309756.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Elegant Shoes </div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/a1/f4/66/a1f4662ba480bd9ce34fe4417748ff6c.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Elegant Shoes </div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/fe/19/ea/fe19eaa4f8c93c0559d6f54204bbe740.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Elegant Shoes </div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/7c/73/d6/7c73d6f0457e90517965ba2b9c81a7d8.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Casual Day Pump Shoes</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/00/04/a6/0004a6ee98bf2212f4a33f88915388ef.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Delight Kaftan</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 4,999</div>
+                       
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/33/60/d4/3360d44470a150660f312c0bd0e10225.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Elegant Shoes</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="https://i.pinimg.com/736x/1b/f1/ec/1bf1ecae28120603907096a0065ef4d8.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Elegant Shoes</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                  
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+           </div>    
+           </div>     
+         
+    <div class="category-section" id="Slippers"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Slippers</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/38/06/eb/3806ebb30be5e753e5b19e60ff5bab19.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Trendy Slippers</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/77/3a/67/773a67a7c676698db136439ff2509bf5.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegant Slippers</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/5a/70/33/5a7033c4071c17e456de6dc8418acd6e.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegant Slippers </div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/f1/47/8d/f1478d3b71724addf714f938d50c2d42.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Trendy Slipper</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/15/6e/aa/156eaaf8a344534b181f4db87882fb34.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Trendy Slipper</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/f7/08/77/f7087780bad5c53171e442c750bf6ced.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Trendy Butterfly Knot Slippers</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/81/b4/8b/81b48bdb251dc366a8f73c8c5acca228.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Trendy Slipper</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 4,999</span>
+                        <span class="sale-price">PKR 2,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/09/d5/a6/09d5a6bbf90c330765967961086abe1c.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Trendy Slipper</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+          <img src="https://i.pinimg.com/736x/02/db/53/02db538ede39dfe4621da76753f1c252.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Trendy Slipper</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+          </div>        
+    <div class="category-section" id="Sandal"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Sandals</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/03/63/65/0363653e27761e7fff968d84d632fc5e.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Brand New Trendy Sandals</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/ac/21/ff/ac21ff1c669dde73f612bc80165e5ef9.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">New Sandals Closed Toe Back Empty</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/88/4f/76/884f76f6f9cf0776d07b36c6dde27c4e.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Elegant Sandals</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/e0/1d/d4/e01dd4bba0276ffaf5e76a03c5a67af5.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">New Trendy Sandals</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/2d/ec/f7/2decf726d9c16a5fdf22c56b291eb731.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">New Trendy Sandals</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/c8/c0/58/c8c0580f9d64e5082c9e17342f031466.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">New Trendy Sandals</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+
+    <div class="category-section" id="Heels"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Heels</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/cd/ec/eb/cdecebe66e3826a5f2f44d0cc78cf886.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Classy Heels CO-ORDS</div>
+                    <div class="product-price">PKR 7,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/45/10/96/451096953e33b41b3df66b9ef893373a.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Classy Heels</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 17,999</span>
+                        <span class="sale-price">PKR 8,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/2c/ba/f8/2cbaf835790e66e9653b2edbef10437d.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> DIOR Heels</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 17,999</span>
+                        <span class="sale-price">PKR 9,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/ff/23/44/ff23441e8dea647777e586ae40c84fab.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Gold Heel</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/54/29/64/5429649477cc9bf8c27aa1705bc48076.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Black Classy Heels</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 9,999</span>
+                        <span class="sale-price">PKR 6,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/b9/b3/1e/b9b31e13c6c511ab6cd0388a6ba78c91.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Elegant Heel</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <div class="category-section" id="Loafers"data-aos="fade-up" data-aos-duration="1000">
+            <div class="category-header"><center><h2>Loafers</h2></center></div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="badge best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/cc/80/28/cc80284c4e131270c4a3f7c5939e5587.jpg" alt="Product 1" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Low heel Elegant Shoes</div>
+                        <div class="product-price">PKR 9,999</div>
+                        <p>Sold: 220 | Remaining: 30</p>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size1"> S</label>
+                            <label><input type="radio" name="size1"> M</label>
+                            <label><input type="radio" name="size1"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/a5f700fedea84205ecdfe7682c916897.jpg?imageView2/2/w/800/q/70/format/webp" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Women's Metallic Buckle Decor Loafers</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 17,999</span>
+                            <span class="sale-price">PKR 14,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/ff/17/88/ff1788cb85c0fb833ffe6ef53be15fa4.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> White Elegant Loafers</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 17,999</span>
+                            <span class="sale-price">PKR 14,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/6d/c5/29/6dc52955dd1531f6970f4f2c35d0ee50.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Loafers</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 8,999</span>
+                            <span class="sale-price">PKR 5,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+
+
+    <div class="category-section" id="Boots"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Boots</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/92/ae/f5/92aef5d1a6af35aca080f1a584aa4dec.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">CHIKO Serenela Square Toe Block Heels Ankle Boots</div>
+                    <div class="product-price">PKR 17,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/72/3e/06/723e066ae4b69f618432deffdc4b7ead.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Classy Black Boot</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 17,999</span>
+                        <span class="sale-price">PKR 14,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/3a/37/b6/3a37b652884a9790b9449c0404f10d00.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Boots</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 17,999</span>
+                        <span class="sale-price">PKR 14,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/e7/0d/ec/e70decc0b01e06050e2596bcd36c4489.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Boot</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 18,999</span>
+                        <span class="sale-price">PKR 15,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/c8/16/e5/c816e5e8eb58725f83479b8f5774eb46.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Silver Boot</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 9,999</span>
+                        <span class="sale-price">PKR 6,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/99/f7/ba/99f7ba4a4813dcc55b1bb1f5bfbb0072.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Boot</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+
+    <div class="category-section" id="Sport Shoes"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Sport Shoes</h2><</center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/e2/68/59/e26859845b4d245121855915cbf3f2f1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Sport Shoes</div>
+                    <div class="product-price">PKR 17,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/47/df/28/47df28d049d372af8463fcb98536529e.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Sport Shoes</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 17,999</span>
+                        <span class="sale-price">PKR 14,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/b2/7a/b4/b27ab4191490903afb96a5e36bcc7fb6.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Sport Shoes</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 18,999</span>
+                        <span class="sale-price">PKR 15,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/cf/7c/e1/cf7ce1f5ad2a39558408380e50859254.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Sport Shoes</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 19,999</span>
+                        <span class="sale-price">PKR 16,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/58/d8/1b/58d81b8fbd44a2babf376c714dd92096.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Sport Shoes</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/a1/f7/8a/a1f78a9c739fcc9e71578f768167aea4.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Sport Shoes</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 18,999</span>
+                        <span class="sale-price">PKR 17,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+        </div>
+
+        <div class="category-section" id="Wedges"data-aos="fade-up" data-aos-duration="1000">
+            <div class="category-header"><center><h2> Wedges </h2></center></div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="badge best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/f6/59/3c/f6593c087f7481bf4d09a35fc95cdc36.jpg" alt="Product 1" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Frog Button Decor Wedge Court Shoes</div>
+                        <div class="product-price">PKR 7,999</div>
+                        <p>Sold: 220 | Remaining: 30</p>
+                       
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/ea/af/50/eaaf503bbc139457e5f306320a64ba05.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Fashionable Wedge Sandals </div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 17,999</span>
+                            <span class="sale-price">PKR 14,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/ad/e7/9e/ade79e220ab2648fe747edee703f432d.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Striped Pattern Knit Espadrille Wedges</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 18,999</span>
+                            <span class="sale-price">PKR 15,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/f0/fb/4e/f0fb4ed01877b450199530cb1e2bda36.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Two Tone Slingback Espadrille Wedge Court Shoes </div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 9,999</span>
+                            <span class="sale-price">PKR 6,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+     </div>
+</div>
+ 
+<footer>
+    <div class="footer-content">
+        <p>© 2025 ShopSphere. All Rights Reserved.</p>
+        <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+    </div>
+</footer>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

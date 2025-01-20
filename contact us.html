@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ShopSphere</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2e6d9; /* Light skin-tone background */
+            color: #3e2a2a;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #e1b28b; /* Accent color */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e1b28b, #f2e6d9);
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out 0.5s;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 40px 20px;
+            gap: 30px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            flex: 1 1 45%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+            color: #3e2a2a;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 95%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #d0a77e;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #f9f3e5;
+            color: #3e2a2a;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            box-shadow: 0px 0px 10px rgba(225, 178, 139, 0.5);
+            outline: none;
+        }
+
+        .contact-form button {
+            background-color: #3e2a2a;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #e1b28b;
+        }
+
+        /* Contact Info Cards */
+        .contact-info {
+            flex: 1 1 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-card h3 {
+            margin-bottom: 10px;
+            color: #3e2a2a;
+        }
+
+        .info-card p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Social Media Icons */
+        .social-media {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #3e2a2a;
+        }
+
+        .social-media a:hover {
+            color: #e1b28b;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-form, .contact-info {
+                flex: 1 1 100%;
+            }
+        }
+        footer {
+        background-color: #3e2a2a;
+        color: white;
+        text-align: center;
+        padding: 20px 10px;
+        margin-top: 40px;
+    }
+    .footer-content {
+        margin-bottom: 10px;
+    }
+    .footer-content h3 {
+        font-family: 'Playfair Display', serif;
+        margin: 10px 0;
+    }
+    .footer-content p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #f2e6d9;
+    }
+    .footer-links a {
+        color: #e1b28b;
+        font-weight: 500;
+        font-size: 14px;
+        margin: 0 10px;
+    }
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+
+
+<section class="hero">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you. Feel free to reach out!</p>
+</section>
+
+
+<section class="contact-section">
+    
+    <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="6" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+
+    <div class="contact-info">
+        <div class="info-card">
+            <h3>Email Us</h3>
+            <p>support@shopsphere.com</p>
+        </div>
+        <div class="info-card">
+            <h3>Call Us</h3>
+            <p>+92 300 0000000</p>
+        </div>
+        <div class="info-card">
+            <h3>Visit Us</h3>
+            <p>ShopSphere HQ, Lahore, Pakistan</p>
+        </div>
+    </div>
+</section>
+
+
+ <div class="social-media">
+    <h2>Follow Us</h2>
+    <a href="#" aria-label="Instagram">📸</a>
+    <a href="#" aria-label="Facebook">📘</a>
+    <a href="#" aria-label="Twitter">🐦</a>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <h3>ShopSphere</h3>
+        <p>Connecting you with style and convenience, wherever you are.</p>
+        <div class="footer-links">
+            <a href="privacy policy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a> | <a href="FAQs.html">FAQs</a>
+        </div>
+    </div>
+    <p>&copy; 2025 ShopSphere. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

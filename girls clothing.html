@@ -1,0 +1,3441 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clothing Page</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Playfair+Display&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f4e6;
+            color: #3e2a2a;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }   
+        header {
+            background-color: #d3c2b0;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+      
+        header h2 {
+            font-size: 30px;
+            font-weight: normal;
+            margin: 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .header-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .header-icons i:hover {
+            color: #e1b28b;
+        }
+        
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    background-image: url('https://i.pinimg.com/736x/bf/26/33/bf2633b217e23560868f63d5746c4d9d.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust overlay transparency */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure text appears above the overlay */
+    max-width: 80%;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    align:Right;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.hero-buttons .btn:hover {
+    background-color: #d9534f;
+    transform: scale(1.1);
+}
+.hero-buttons .btn {
+    background-color: #e1b28b;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    background-color: #d9534f;
+    transform: scale(1.1);
+}
+
+.section-banner {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.banner-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            color: white;
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            overflow-y: auto;
+            padding: 20px;
+            z-index: 1000;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #5e3c23;
+            font-size: 1rem;
+            padding: 5px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #a67856;
+        }
+
+        .active {
+            color: #cfa582;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+        }
+        .category-section {
+            margin-bottom: 50px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .category-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e1b28b;
+            padding-bottom: 10px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #e1b28b;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .product-image {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-info {
+            margin-top: 10px;
+        }
+        .product-name {
+            
+            font-size: 20px;
+            font-weight: bold;
+            color: #3e2a2a;
+        }
+        .product-price {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-price .original-price {
+    text-decoration: line-through;
+    color: #a0a0a0;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.product-price .sale-price {
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 18px;
+}
+        .product-sizes label {
+            margin-right: 10px;
+            font-weight: 400;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e1b28b;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+            animation: bounce 2s infinite;
+        }
+        .sale {
+            background-color: red;
+        }
+        .btn-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            background-color: #3e2a2a;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #e1b28b;
+           color: #3e2a2a;
+           transform: scale(1.1);
+        }
+
+        footer {
+    background-color: #d3c2b0;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+        }
+       
+footer .social-icons i {
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+footer .social-icons i:hover {
+    color: #e1b28b;
+}
+
+        @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+        @media screen and (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo"><strong>ShopSphere</strong></div>
+    <center><h2><b>CLOTHING</b></h2></center>
+    <div class="header-icons">
+        <i class="fa fa-search"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-shopping-cart"></i>
+    </div>
+</header>
+<div class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Welcome to ShopSphere</h1>
+        <p class="hero-subtitle">Discover the latest trends in fashion and lifestyle</p>
+        <div class="hero-buttons">
+            <a href="#shop-now" class="btn">Shop Now</a>
+            <a href="#categories" class="btn">Explore Categories</a>
+        </div>
+    </div>
+</div>
+
+<div class="sidebar">
+    <ul>
+        <li><a href="#long-frocks">Long Frocks</a></li>
+        <li><a href="#Abayas">Modest Wear</a></li>
+        <li><a href="#Kaftans">Kaftans</a></li>
+        <li><a href="#Co-ords">Co-ords</a></li>
+        <li><a href="#Embroidered">Embroidered</a></li>
+        <li><a href="#Pants">Pants</a></li>
+        <li><a href="#Skirts">Skirts</a></li>
+        <li><a href="#Hoodies">Hoodies and Sweatshirts</a></li>
+        <li><a href="#Other">Other Accessories</a></li>    
+    </ul>
+</div>
+
+
+<div class="content">
+    <div class="category-section" id="long-frocks">
+        <div class="category-header"><center><h2>Long Frocks</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="printed frock.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Floral Printed Long Frock</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="baby pink.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Elegant Long Frock</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="whitefrock.jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Cherry Whisper Frock Frock</div>
+                    <div class="product-price">PKR 4,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+           </div> 
+            <div class="product-card">
+                
+                <img src="mirirfrock(10).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Auzre Elegence Frock</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="mirirfrock(11).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Celestial Skin Frock</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="mirirfrock(13).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Floral Print Frock</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <p>Sold: 100 | Remaining: 80</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="mirirfrock(12).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Floral Print Frock</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="mirrorbl.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Midnight Chic Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 4,999</div>
+                       
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="mirror (1).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Radient Pink Frock</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="hafsa (1).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Forest Fern Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>    
+            <div class="product-card">  
+                <img src="hafsa (2).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Earthy Elegance Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="hafsabaybayangiyim (1).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Royal Plum Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="hafsabaybayangiyim (2).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Ocean Breeze Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="hafsabaybayangiyim (3).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Crimson Charm Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="hafsabaybayangiyim (4).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Raven CHeck Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="product-card">  
+                <img src="hafsabaybayangiyim (6).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Lush Green Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="hafsabaybayangiyim (7).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Lemonade Elegance Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="haf.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Silver Mist Elegant Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="pink lomg frock.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Cotton Candy Dream Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="Elegant Guipure Lace Belted Dress – Perfectly Modest with Lantern Sleeves for Spring & Fall.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Ivory Elegant Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="white_clothes.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Party Wear White Frock</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="moonlight(6).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Elegant Long Frock</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="moonlight(7).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Floral Long Frock</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="moonlight(8).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Sleek Noir Long Frock</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="moonlight(5).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Elegant Long Frock</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="Blush A Line Square Neck Tiered Prom Dress with Ruffles - Light blue _ US24W.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Auzre Dreamed Layered Frock</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 4,999</span>
+                        <span class="sale-price">PKR 2,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="Green A Line Square Neck Tiered Long Prom Dress with Ruffles - Blush _ US6.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Blossom Breeze Layered Frock</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+           </div> 
+        
+
+
+
+    <div class="category-section" id="Abayas"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><strong><h2>Modest Wear</h2></strong></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="ABAYA (1).jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Lavernder Luxe Double Abaya</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="ABAYA (2).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Emerald Enchantment Doubled Abaya</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                   <div class="btn-group">
+    <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="ABAYA (3).jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Slate Serenity Doubled Abaya</div>
+                    <div class="product-price">PKR 4,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="ABAYA (4).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Layered Twilight Double Abaya</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="ABAYA (5).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="ABAYA (6).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="ABAYA (7).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">FChic Luxe Abaya</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (8).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 4,999</div>
+                       
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (9).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (10).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>    
+            <div class="product-card">  
+                <img src="ABAYA (11).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (12).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (13).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="product-card">  
+                <img src="ABAYA (16).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (17).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (18).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (19).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (20).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="ABAYA (21).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                         <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="ABAYA (22).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="aba (1).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="aba (2).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="aba (3).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="aba (5).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 4,999</span>
+                        <span class="sale-price">PKR 2,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="aba (4).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="aba (6).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 4,999</span>
+                        <span class="sale-price">PKR 2,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="aba (8).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 4,999</span>
+                        <span class="sale-price">PKR 2,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+    <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="aba (9).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Luxe Abaya</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                         <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            
+       </div>
+        
+           
+    <div class="category-section" id="Kaftans" data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Kaftanss</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+          <img src="kaftan (1).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Petal and Lace Kaftan</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="kaftan (2).jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Sunset Mirage Kaftan </div>
+                    <div class="product-price">PKR 4,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="kaftan (3).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Casual Day Kaftan</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="kaftan (4).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Casual Day Kaftan</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="kaftan (5).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Casual Day Kaftan</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="kaftan (6).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Casual Day Kaftan</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="kaftan (7).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Delight Kaftan</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 4,999</div>
+                       
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="kaftan (8).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Delight Kaftan</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">  
+                <img src="kaftan (9).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Delight Kaftan</div>
+                    <div class="product-price">
+                        <div class="product-price">PKR 5,999</div>
+                    </div>
+                  
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+           </div>    
+           </div>     
+         
+    <div class="category-section" id="Co-ords"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Co-ords</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="co and sets (1).com" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="co and sets (2).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="co and sets (1).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="co and sets (3).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="co and sets (4).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="co and sets (5).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="co and sets (6).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 4,999</span>
+                        <span class="sale-price">PKR 2,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="co and sets (7).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+          <img src="co and sets (8).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,999</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="co and sets (9).jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS </div>
+                    <div class="product-price">PKR 4,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="co and sets (10).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="co and sets (11).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="co and sets (12).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="co and sets (13).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="co and sets (14).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="co and sets (15).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <div class="product-price">PKR 5,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+          </div>        
+    <div class="category-section" id="Embroidered"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Embroidered</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="embroided (1).jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegant dress</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="embroided (2).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress CO-ORDS</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="embroided (3).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="embroided (5).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="embroided (13).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="embroided (14).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="embroided (7).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Floral Embroidered Denim</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 14,999</span>
+                        <span class="sale-price">PKR 12,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="embroided (8).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Floral Embroidered Denim</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 7,950</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+          <img src="embroided (9).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">EFloral Embroidered Denim</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 7,250</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="embroided (10).jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Floral Embroidered Denim</div>
+                    <div class="product-price">PKR 6,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="embroided (11).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Floral Embroidered Denim</div>
+                    <div class="product-price">PKR 6,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="embroided (12).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress</div>
+                    <div class="product-price">PKR 15,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="embroided (15).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="embroided (16).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress</div>
+                    <div class="product-price">PKR 14,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="embroided (17).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Enchanted Floral Embroidered Dress</div>
+                    <div class="product-price">PKR 15,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="embroided (18).jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Calm Elegance CO-ORDS</div>
+                    <div class="product-price">PKR 15,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+   </div>
+    <div class="category-section" id="Pants"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Pants</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/86/9a/dc/869adce873e5b21e94cf732868701138.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Ivory Floral Cutwork Pants CO-ORDS</div>
+                    <div class="product-price">PKR 7,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/2c/43/0f/2c430f27650d4c652d4c7d6099f721da.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Dandelion Pants</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 4,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/b7/4b/f0/b74bf012e8bf2b9b5aa5cd64a31d9bec.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Floral Charming Flare Pants</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 4,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/47/f1/1a/47f11a399bcbbd8b5ef3da9d52cba7c1.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Beaded Split Bow Jeans</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/b4/a1/6b/b4a16bce22e066e7d799019cb4a849a9.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">High Waist Wide Leg Pants</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 9,999</span>
+                        <span class="sale-price">PKR 6,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://img-va.myshopline.com/image/store/1722410784615/image-2FFSZW26386-2FFSZW26386-BR-L-NUB-2F8d15b1451b6038ed09e570523d98c3fd_600x.png?w=600&h=800&q=80" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Women's lace-up plaid cigarette pants</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/ed/f8/49/edf849da9176b0c9514daa186bcd8e3c.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">High Waist Slant Pocket Wide Leg Jeans</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 7,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/06/0e/42/060e420dda5942a1099ad142fbf774ba.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Hazel Blue Wide Leg Jeans</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 9,999</span>
+                        <span class="sale-price">PKR 7,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+          <img src="https://img.kwcdn.com/product/fancy/98f79b96-03ca-4d3a-929e-342c4b94f1d2.jpg?imageView2/2/w/800/q/70/format/webp" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Plain Color Wide Leg Pants</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 7,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="https://img.kwcdn.com/product/fancy/23945886-e7f3-45fe-a47f-ebd40197ba5a.jpg?imageView2/2/w/800/q/70/format/webp" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Girls Casual & Thin & Versatile Wide Leg Pants With Belt </div>
+                    <div class="product-price">PKR 7,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://img.kwcdn.com/product/fancy/b64f899b-34df-4ab6-b308-aea1ae81cae6.jpg?imageView2/2/w/800/q/70/format/webp" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Plus Size Women's Light Blue Wide-Leg Pants - 100% Polyester</div>
+                    <div class="product-price">PKR 8,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://img.kwcdn.com/product/fancy/a45a9380-a6b1-4113-9d0b-290210460d81.jpg?imageView2/2/w/800/q/70/format/webp" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Girls' Loose-Fit Faux Denim Print Pants - Elegant, Non-Stretch Polyester</div>
+                    <div class="product-price">PKR 8,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <div class="category-section" id="Tops"data-aos="fade-up" data-aos-duration="1000">
+            <div class="category-header"><center><h2>Tops</h2></center></div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="badge best-seller">Best Seller</div>
+                    <img src="https://i.pinimg.com/736x/be/73/3a/be733a7f11fb04c42bb2d62eef3ce614.jpg" alt="Product 1" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <div class="product-price">PKR 7,999</div>
+                        <p>Sold: 220 | Remaining: 30</p>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size1"> S</label>
+                            <label><input type="radio" name="size1"> M</label>
+                            <label><input type="radio" name="size1"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/62/75/e2/6275e23af9bc944542f17f40d8496236.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 7,999</span>
+                            <span class="sale-price">PKR 4,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/9b/84/a2/9b84a25984bc88bf2e5695ab345e1378.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 7,999</span>
+                            <span class="sale-price">PKR 4,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/28/ae/10/28ae10f087b5cd5c0c4891768ea8b8ac.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 8,999</span>
+                            <span class="sale-price">PKR 5,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/89/82/03/898203db5ea7dc472551baf7955b06f4.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 9,999</span>
+                            <span class="sale-price">PKR 6,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/29/17/a3/2917a3b2d770b248f8464de88379dedf.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 5,999</span>
+                            <span class="sale-price">PKR 3,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/13/f9/49/13f94965c4241ce7fdf6f77597423bd6.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <p>Sold: 119 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 5,999</span>
+                            <span class="sale-price">PKR 3,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/10/cf/90/10cf9091425c3dfd201a617c057ef4f7.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 5,999</span>
+                            <span class="sale-price">PKR 4,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+              <img src="https://i.pinimg.com/736x/cf/56/9a/cf569a58e6b82d839c70d70585d43086.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 5,999</span>
+                            <span class="sale-price">PKR 3,999</span>
+                        </div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="badge">Free Shipping</div>
+                    <img src="https://i.pinimg.com/736x/3c/73/f1/3c73f196a6ab2bd11fc6d85c841686f5.jpg" alt="Product 3" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee </div>
+                        <div class="product-price">PKR 5,499</div>
+                        <p>Sold: 120 | Remaining: 30</p>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size3"> S</label>
+                            <label><input type="radio" name="size3"> M</label>
+                            <label><input type="radio" name="size3"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    
+                    <img src="https://i.pinimg.com/736x/f8/bc/71/f8bc7147524e32d6803cbf5351252df7.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <div class="product-price">PKR 5,999</div>
+                        <p>Sold: 120 | Remaining: 30</p>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+               
+                    <img src="https://i.pinimg.com/736x/02/5c/33/025c33c4a5c522e9575618dc403eae79.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <div class="product-price">PKR 5,999</div>
+                        <p>Sold: 170 | Remaining: 30</p>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+               
+                    <img src="https://i.pinimg.com/736x/36/d1/5f/36d15f56003ed51834e35c4a17104394.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sweet Serenity Tee</div>
+                        <div class="product-price">PKR 4,999</div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+    <div class="category-section" id="Skirts"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Skirts</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/7a/63/00/7a63008f02f1d06e07603c5293a1327b.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <div class="product-price">PKR 7,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/55/41/13/554113242e2dde9620b8d07117ac304f.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 4,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/64/00/c0/6400c00bed8e3d1f7e1eeacf6862c738.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 4,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/36/89/8c/36898c7a0b5b2ab28ed422c51f11db1a.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/e7/3f/2e/e73f2e07db962efe53628b071f3f0722.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 9,999</span>
+                        <span class="sale-price">PKR 6,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/6f/05/aa/6f05aadb434e94359a0c7ab45c95b1fd.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/bf/4b/87/bf4b87b98cb177b2fb6c70c15e21e00c.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 7,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/fd/f7/f1/fdf7f164c62ccd50f89acdb3d61d9ca3.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 9,999</span>
+                        <span class="sale-price">PKR 7,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="https://i.pinimg.com/736x/70/66/80/706680c11cbb32ae3f2142016f585ec2.jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt </div>
+                    <div class="product-price">PKR 7,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/2b/4a/df/2b4adf8532de05cf7376f2465150491c.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <div class="product-price">PKR 8,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/9f/51/2f/9f512f84e057e88d8965e8ec795f1e81.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <div class="product-price">PKR 8,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/ef/2c/c2/ef2cc2f96ae14a7224600f8a1c997e73.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Graceful Twirl Skirt</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    <div class="category-section" id="Hoodies"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Hoodies and Sweatshirts</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/5b/e0/0b/5be00bbca7ae0da738c13db7c2de936a.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Heart and Slogan Graphic Hoodie</div>
+                    <div class="product-price">PKR 7,999</div>
+                    <p>Sold: 220 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> S</label>
+                        <label><input type="radio" name="size1"> M</label>
+                        <label><input type="radio" name="size1"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/ae/9f/78/ae9f78da6d326ba0e04696217a880569.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Bear Hoodie</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 7,999</span>
+                        <span class="sale-price">PKR 4,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/a7/73/ca/a773caca6de431eea2f2ab7330dc04ef.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name"> Cozy Hoodie</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 5,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/c3/19/8b/c3198b662d085daab490c1cc92f4ef4e.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Cozy Hoodie</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 9,999</span>
+                        <span class="sale-price">PKR 6,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/96/96/bf/9696bf388eff22e388aa4c87267d7a1d.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Cozy Cloud Hoodie</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 15,999</span>
+                        <span class="sale-price">PKR 13,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/be/5b/6b/be5b6bf3d4d4061236066523595b268f.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Cozy Cloud Hoodie</div>
+                    <p>Sold: 119 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 7,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/ee/70/41/ee7041936bb6ed1c4df707f5a75d30a9.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Warmth Sweatshirt</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 9,999</span>
+                        <span class="sale-price">PKR 7,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card"> 
+                <div class="badge sale">Sale</div>
+          <img src="https://i.pinimg.com/736x/3e/bf/1b/3ebf1b204c9748f89009f94fe4c8cf4f.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Warmth Sweatshirt</div>
+                    <p>Sold: 129 | Remaining: 41</p>
+                    <div class="product-price">
+                        <span class="original-price">PKR 8,999</span>
+                        <span class="sale-price">PKR 7,999</span>
+                    </div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="badge">Free Shipping</div>
+                <img src="https://i.pinimg.com/736x/8c/c5/2f/8cc52fdcb10dd8f5db6fce18f183ea58.jpg" alt="Product 3" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Warmth Sweatshirt </div>
+                    <div class="product-price">PKR 7,499</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size3"> S</label>
+                        <label><input type="radio" name="size3"> M</label>
+                        <label><input type="radio" name="size3"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                
+                <img src="https://i.pinimg.com/736x/6e/96/c1/6e96c1b04f307fe2365758304ceaa778.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Warmth Sweatshirt</div>
+                    <div class="product-price">PKR 8,999</div>
+                    <p>Sold: 120 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/09/df/de/09dfdecda741deaff11cdbe2067ccdca.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Warmth Sweatshirt</div>
+                    <div class="product-price">PKR 8,999</div>
+                    <p>Sold: 170 | Remaining: 30</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+           
+                <img src="https://i.pinimg.com/736x/dd/3c/e6/dd3ce6ba8bfbb24c865a12880589ccfd.jpg" alt="Product 2" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Chic Warmth Sweatshirt</div>
+                    <div class="product-price">PKR 4,999</div>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size2"> S</label>
+                        <label><input type="radio" name="size2"> M</label>
+                        <label><input type="radio" name="size2"> L</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="category-section" id="Other"data-aos="fade-up" data-aos-duration="1000">
+            <div class="category-header"><center><h2>Other Accessories </h2></center></div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="badge best-seller">Best Seller</div>
+                    <img src="scarf (2).jpg" alt="Product 1" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Elegant HIJAB Scarves Box</div>
+                        <div class="product-price">PKR 7,999</div>
+                        <p>Sold: 220 | Remaining: 30</p>
+                       
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="scarf (4).jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Elegant HIJAB Scarves Box</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 7,999</span>
+                            <span class="sale-price">PKR 4,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="scarf (3).jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Elegant HIJAB Scarves Box</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 8,999</span>
+                            <span class="sale-price">PKR 5,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="scarf (6).jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">COCO BOX IS NOW BACK IN STOCK! </div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 9,999</span>
+                            <span class="sale-price">PKR 6,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="scarf (7).jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Hijab Box</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 15,999</span>
+                            <span class="sale-price">PKR 13,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/fa/44/a1/fa44a135ec117719a186e33d519fa429.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Evergreen Hijab Personalized Bouquet</div>
+                        <p>Sold: 119 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 8,999</span>
+                            <span class="sale-price">PKR 7,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+                    <img src="https://i.pinimg.com/736x/21/ae/09/21ae093e7f1936e04ec163dc725156fc.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Hand Embroidered Daisies Bucket Hat</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 9,999</span>
+                            <span class="sale-price">PKR 7,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="product-card"> 
+                    <div class="badge sale">Sale</div>
+              <img src="https://i.pinimg.com/736x/5f/7b/78/5f7b7812aafc79a9cf00a965a99086f5.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Pearl Decor Straw Hat</div>
+                        <p>Sold: 129 | Remaining: 41</p>
+                        <div class="product-price">
+                            <span class="original-price">PKR 8,999</span>
+                            <span class="sale-price">PKR 7,999</span>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="badge">Free Shipping</div>
+                    <img src="https://i.pinimg.com/736x/dd/0c/9a/dd0c9a798e7841d720bb7c19a1cf5ffd.jpg" alt="Product 3" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name"> Bow Decor Straw Hat</div>
+                        <div class="product-price">PKR 7,499</div>
+                        <p>Sold: 120 | Remaining: 30</p>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size3"> S</label>
+                            <label><input type="radio" name="size3"> M</label>
+                            <label><input type="radio" name="size3"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    
+                    <img src="https://i.pinimg.com/736x/03/dd/65/03dd65e8d72098433d3031c1d5c64cf8.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Large Satin Silky Hair Bow</div>
+                        <div class="product-price">PKR 8,999</div>
+                        <p>Sold: 120 | Remaining: 30</p>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+               
+                    <img src="https://i.pinimg.com/736x/ca/91/99/ca9199a2b8567df46da570e0d175f1a9.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Large Satin Silky Hair Bow</div>
+                        <div class="product-price">PKR 8,999</div>
+                        <p>Sold: 170 | Remaining: 30</p>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+               
+                    <img src="https://i.pinimg.com/736x/14/ce/75/14ce75aae193e61a4b9aa22366bbf167.jpg" alt="Product 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Large Satin Silky Hair Bow</div>
+                        <div class="product-price">PKR 4,999</div>
+                        <div class="product-sizes">
+                            <label><input type="radio" name="size2"> S</label>
+                            <label><input type="radio" name="size2"> M</label>
+                            <label><input type="radio" name="size2"> L</label>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+    
+<footer>
+    <div class="footer-content">
+        <p>© 2025 ShopSphere. All Rights Reserved.</p>
+        <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+    </div>
+</footer>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clothing Page</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Playfair+Display&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f4e6;
+            color: #3e2a2a;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }   
+        header {
+            background-color: #d3c2b0;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+      
+        header h2 {
+            font-size: 30px;
+            font-weight: normal;
+            margin: 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .header-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .header-icons i:hover {
+            color: #e1b28b;
+        }
+        
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    background-image: url('https://i.pinimg.com/736x/4c/14/4a/4c144add65e8617d6a0d6f919f18a4af.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust overlay transparency */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure text appears above the overlay */
+    max-width: 80%;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    align:Right;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.hero-buttons .btn:hover {
+    background-color: #d9534f;
+    transform: scale(1.1);
+}
+.hero-buttons .btn {
+    background-color: #e1b28b;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    background-color: #d9534f;
+    transform: scale(1.1);
+}
+
+.section-banner {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.banner-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            color: white;
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            overflow-y: auto;
+            padding: 20px;
+            z-index: 1000;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #5e3c23;
+            font-size: 1rem;
+            padding: 5px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #a67856;
+        }
+
+        .active {
+            color: #cfa582;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+        }
+        .category-section {
+            margin-bottom: 50px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .category-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e1b28b;
+            padding-bottom: 10px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #e1b28b;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .product-image {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-info {
+            margin-top: 10px;
+        }
+        .product-name {
+            
+            font-size: 20px;
+            font-weight: bold;
+            color: #3e2a2a;
+        }
+        .product-price {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-price .original-price {
+    text-decoration: line-through;
+    color: #a0a0a0;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.product-price .sale-price {
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 18px;
+}
+        .product-sizes label {
+            margin-right: 10px;
+            font-weight: 400;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e1b28b;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+            animation: bounce 2s infinite;
+        }
+        .sale {
+            background-color: red;
+        }
+        .btn-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            background-color: #3e2a2a;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #e1b28b;
+           color: #3e2a2a;
+           transform: scale(1.1);
+        }
+
+        footer {
+    background-color: #d3c2b0;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+        }
+       
+footer .social-icons i {
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+footer .social-icons i:hover {
+    color: #e1b28b;
+}
+
+        @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+        @media screen and (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo"><strong>ShopSphere</strong></div>
+    <center><h2><b>BOOKS COLLECTION</b></h2></center>
+    <div class="header-icons">
+        <i class="fa fa-search"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-shopping-cart"></i>
+    </div>
+</header>
+<div class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Welcome to ShopSphere</h1>
+        <p class="hero-subtitle">Discover the latest trends in fashion and lifestyle</p>
+        <div class="hero-buttons">
+            <a href="#shop-now" class="btn">Shop Now</a>
+            <a href="#categories" class="btn">Explore Categories</a>
+        </div>
+    </div>
+</div>
+
+<div class="sidebar">
+     <ul>
+        <li><a href="#islam">Islamic </a></li>
+         <li><a href="#fiction">Fictional</a></li>
+         <li><a href="#non">Non=Fictional</a></li>
+         <li><a href="#fantasy">Fantasy </a></li>
+         <li><a href="#urdu">Urdu Novels</a></li>
+       
+    </ul>
+</div>
+
+
+<div class="content">
+    <div class="category-section" id="islam">
+        <div class="category-header"><center><h2>Islamic Books</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/0f/41/e5/0f41e57085e1ba38ae54b370ec15f063.jpg" alt="Islamic Book" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">The Sealed Nectar</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 2,499</span>
+                        <span class="sale-price">PKR 1,999</span>
+                    </div>
+                    <p>Sold: 120 | Remaining: 40</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/2c/48/3a/2c483aace73577be8f5242a5377bb958.jpg" alt="Quran Reflections" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Quran Reflections</div>
+                    <div class="product-price"><span class="original-price">PKR 1,999</span> <span class="sale-price">PKR 1,699</span></div>
+                    <p>Sold: 80 | Remaining: 30</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/22/b6/18/22b6181bd81cf24d3bb9f178abe7a3d7.jpg" alt="Fortress of the Muslim" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Fortress of the Muslim</div>
+                    <div class="product-price"><span class="original-price">PKR 999</span> <span class="sale-price">PKR 799</span></div>
+                    <p>Sold: 150 | Remaining: 60</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+        </div> 
+        
+
+
+
+    <div class="category-section" id="fiction"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><strong><h2>Fictional</h2></strong></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/74/05/51/740551c3cec86af92fb97ffcf78404cf.jpg" alt="Fictional Book" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">The Great Gatsby</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 1,499</span>
+                        <span class="sale-price">PKR 1,199</span>
+                    </div>
+                    <p>Sold: 300 | Remaining: 150</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/9c/85/b9/9c85b923eaacb0bf945131b5683f1b6d.jpg" alt="The Little Prince" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">The Little Prince</div>
+                    <div class="product-price"><span class="original-price">PKR 1,299</span> <span class="sale-price">PKR 999</span></div>
+                    <p>Sold: 220 | Remaining: 70</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/ad/d1/d1/add1d1071222294b977fad07da02f4fa.jpg" alt="1984" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">1984</div>
+                    <div class="product-price"><span class="original-price">PKR 1,999</span> <span class="sale-price">PKR 1,599</span></div>
+                    <p>Sold: 350 | Remaining: 120</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+           
+    <div class="category-section" id="non" data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Non-Fictional</h2></center></div>
+        <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/ac/cf/54/accf545de091b4850cc64a4b70d21d2f.jpg" alt="Sapiens" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Sapiens: A Brief History of Humankind</div>
+                        <div class="product-price">
+                            <span class="original-price">PKR 2,999</span>
+                            <span class="sale-price">PKR 2,399</span>
+                        </div>
+                        <p>Sold: 500 | Remaining: 200</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/39/d9/d6/39d9d620d911c59cddd87302a2810bc3.jpg" alt="Atomic Habits" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Atomic Habits</div>
+                        <div class="product-price">
+                            <span class="original-price">PKR 1,999</span>
+                            <span class="sale-price">PKR 1,599</span>
+                        </div>
+                        <p>Sold: 400 | Remaining: 150</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/c4/f1/9b/c4f19b55700d07190c7ba215aec2a76c.jpg" alt="Educated" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Educated: A Memoir</div>
+                        <div class="product-price">
+                            <span class="original-price">PKR 2,499</span>
+                            <span class="sale-price">PKR 1,999</span>
+                        </div>
+                        <p>Sold: 350 | Remaining: 120</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+         
+    <div class="category-section" id="fantasy"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Fantasy</h2></center></div>
+        <div class="product-grid">
+               
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/76/4f/19/764f191c4ed9362ce1b719a3c8aba195.jpg" alt="The Hobbit" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">The Hobbit</div>
+                        <div class="product-price">
+                            <span class="original-price">PKR 2,499</span>
+                            <span class="sale-price">PKR 1,999</span>
+                        </div>
+                        <p>Sold: 600 | Remaining: 100</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/18/85/1c/18851c789d4376fdf81a0ecfb1231c72.jpg" alt="Harry Potter" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Harry Potter and the Philosopher's Stone</div>
+                        <div class="product-price">
+                            <span class="original-price">PKR 3,499</span>
+                            <span class="sale-price">PKR 2,999</span>
+                        </div>
+                        <p>Sold: 800 | Remaining: 300</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/7a/6a/08/7a6a08459a75b475d515411c29eae904.jpg" alt="Game of Thrones" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Game of Thrones: A Song of Ice and Fire</div>
+                        <div class="product-price">
+                            <span class="original-price">PKR 4,999</span>
+                            <span class="sale-price">PKR 4,199</span>
+                        </div>
+                        <p>Sold: 450 | Remaining: 150</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+          </div> 
+
+    <div class="category-section" id="urdu"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><h2>Urdu Novels</h2></center></div>
+        <div class="product-grid">
+          
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/4f/f9/99/4ff9996ed5c59cbfbc3ecefd8bc7ea31.jpg" alt="Peer-e-Kamil" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Peer-e-Kamil by Umera Ahmed</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 999</span>
+                        <span class="sale-price">PKR 799</span>
+                    </div>
+                    <p>Sold: 1,200 | Remaining: 300</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/33/42/12/3342125613f768212b1b5e3a00f57bf0.jpg" alt="Raja Gidh" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Raja Gidh by Bano Qudsia</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 1,199</span>
+                        <span class="sale-price">PKR 999</span>
+                    </div>
+                    <p>Sold: 900 | Remaining: 150</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/46/75/fb/4675fb7a600b74fea594cb6fb5956aa1.jpg" alt="Udaas Naslein" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Udaas Naslein by Abdullah Hussain</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 1,499</span>
+                        <span class="sale-price">PKR 1,299</span>
+                    </div>
+                    <p>Sold: 800 | Remaining: 200</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/bd/19/25/bd1925ccc9d4255fe484d71acf8c6d5f.jpg" alt="Zavia" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Zavia by Ashfaq Ahmed</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 1,299</span>
+                        <span class="sale-price">PKR 1,099</span>
+                    </div>
+                    <p>Sold: 1,000 | Remaining: 250</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="product-card">
+                <img src="https://i.pinimg.com/736x/e2/b7/80/e2b780b40cc3f78bc572342fae31fd1c.jpg" alt="Khuda Aur Mohabbat" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Khuda Aur Mohabbat by Hashim Nadeem</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 1,399</span>
+                        <span class="sale-price">PKR 1,199</span>
+                    </div>
+                    <p>Sold: 850 | Remaining: 180</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+     </div>
+</div>
+ 
+<footer>
+    <div class="footer-content">
+        <p>© 2025 ShopSphere. All Rights Reserved.</p>
+        <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+    </div>
+</footer>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

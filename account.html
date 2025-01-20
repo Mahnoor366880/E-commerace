@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSphere - Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f5f2;
+        }
+
+        .account-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f7f5f2;
+        }
+
+        .account-box {
+            width: 400px;
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .account-header {
+            background-color: #5e3c23;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            position: relative;
+        }
+
+        .account-header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .account-header img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+        }
+
+        .account-tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: #d3c2b0;
+            padding: 10px 0;
+        }
+
+        .account-tab {
+            cursor: pointer;
+            color: #5e3c23;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .account-tab:hover {
+            color: #a67856;
+        }
+
+        .account-tab.active {
+            border-bottom: 2px solid #5e3c23;
+        }
+
+        .account-content {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5e3c23;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #a67856;
+        }
+
+        .profile-info {
+            text-align: left;
+        }
+
+        .profile-info h3 {
+            font-size: 18px;
+            color: #5e3c23;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .branding {
+            margin-top: 15px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="account-container">
+    <div class="account-box">
+        <div class="account-header">
+            <h1>ShopSphere</h1>
+            <p>Your Gateway to Shopping Excellence</p>
+            <img src="logo.webp" alt="ShopSphere Logo">
+        </div>
+        <div class="account-tabs">
+            <div class="account-tab active" onclick="showTab('login')">Login</div>
+            <div class="account-tab" onclick="showTab('signup')">Sign Up</div>
+            <div class="account-tab" onclick="showTab('profile')">Profile</div>
+        </div>
+        <div class="account-content" id="content-login">
+            <form>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+        <div class="account-content" id="content-signup" style="display: none;">
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email-signup">Email</label>
+                    <input type="email" id="email-signup" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password-signup">Password</label>
+                    <input type="password" id="password-signup" placeholder="Enter your password">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <div class="account-content" id="content-profile" style="display: none;">
+            <div class="profile-info">
+                <h3>Welcome, XYZ</h3>
+                <p>Email: xyz@example.com</p>
+                <p>Member since: January 2024</p>
+                <button>Edit Profile</button>
+            </div>
+        </div>
+        <div class="branding">
+            &copy; 2025 ShopSphere. All rights reserved.
+        </div>
+    </div>
+</div>
+
+<script>
+    function showTab(tab) {
+        const tabs = document.querySelectorAll('.account-tab');
+        tabs.forEach(t => t.classList.remove('active'));
+
+        const contents = document.querySelectorAll('.account-content');
+        contents.forEach(content => content.style.display = 'none');
+
+        document.querySelector(`#content-${tab}`).style.display = 'block';
+        document.querySelector(`.account-tab:nth-child(${tab === 'login' ? 1 : tab === 'signup' ? 2 : 3})`).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
+

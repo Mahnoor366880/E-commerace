@@ -1,0 +1,175 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShopSphere - Your ultimate shopping destination for fashion, beauty, and more.">
+    <meta name="author" content="ShopSphere Team">
+    <title>Welcome to ShopSphere</title>
+
+    <!-- Linking Google Font for a modern and clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Link to FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+    <!-- Internal CSS for styling the homepage -->
+    <style>
+        /* General Reset and Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10; /* Ensure header is on top */
+        }
+
+        .logo-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%); /* Center the logo horizontally */
+            top: 20px; /* Move logo slightly down */
+            z-index: 2; /* Keep logo above background */
+        }
+
+        .logo-container .logo {
+            width: 180px;
+            height: auto;
+        }
+
+        .home-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            background: url('https://i.pinimg.com/736x/24/94/95/2494959078e7aa93954b350780a04556.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            padding-top: 100px; /* Ensure content doesn't overlap logo */
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .welcome-banner h1 {
+            font-size: 48px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 15px;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .welcome-banner p {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 2.5s ease-out forwards;
+        }
+
+        .cta-buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .primary-btn {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .secondary-btn {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 2px solid #d9534f;
+        }
+
+        .primary-btn:hover, .secondary-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            color: #888;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <!-- Replace with your logo image -->
+            <img src="logo.webp" alt="ShopSphere Logo" class="logo">
+        </div>
+    </header>
+
+    <!-- Main Homepage Section -->
+    <main class="home-page">
+        <div class="welcome-banner">
+            <h1>Welcome to ShopSphere!</h1>
+            <p>Your one-stop shop for the latest fashion, beauty, and accessories. Explore, enjoy, and shop to your heart's content!</p>
+            <div class="cta-buttons">
+                <a href="account.html" class="btn primary-btn">Create an Account</a>
+                <a href="shop.html" class="btn secondary-btn">Explore Now</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 ShopSphere. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

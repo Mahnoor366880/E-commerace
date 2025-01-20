@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Main Page</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f3ed;
+            color: #4a4a4a;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #a37a74;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 35px;
+            left: 0;
+            background-color: #fff;
+            color: #4a4a4a;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 10px 0;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            padding: 10px 20px;
+        }
+
+        nav ul li ul li a {
+            color: #4a4a4a;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('https://via.placeholder.com/1920x800') no-repeat center center/cover;
+            color: #bd7a7a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h2 {
+            font-size: 50px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero button {
+            padding: 15px 30px;
+            background-color: #e9c691;
+            color: #4a4a4a;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero button:hover {
+            background-color: #a37a74;
+            color: #fff;
+        }
+ /* Categories Section */
+        .categories {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .categories h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .categories .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .categories .card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .categories .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .categories .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .categories .card h3 {
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 60%;
+            max-width: 500px;
+            border: 1px solid #c8a27a;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background: #c8a27a;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: -5px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        /* Featured Products */
+        .featured-products {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .featured-products h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .featured-products .grid {
+            display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        justify-items: center;
+        }
+
+        .featured-products .product {
+            position: relative;
+        width: 100%;
+        max-width: 280px;
+        background: #f9f9f9;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        }
+
+        .featured-products .product:hover {
+            transform: scale(1.05);
+        }
+
+        .featured-products .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            overflow: hidden;
+        }
+        .product-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #ff5733;
+        color: white;
+        padding: 5px 10px;
+        font-size: 0.9rem;
+        border-radius: 5px;
+    }
+
+    .product-info {
+        padding: 20px;
+        text-align: left;
+    }
+
+    .product-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .product-rating {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: #f4a300;
+    }
+
+    .product-price {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .original-price {
+        text-decoration: line-through;
+        color: #aaa;
+        margin-right: 10px;
+    }
+
+    .sale-price {
+        color: #ff5733;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .btn:hover {
+        background-color: #ff5733;
+    }
+        .featured-products .product h3 {
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: #4b3621;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+ /* Categories Section */
+ .categories {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .categories h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .categories .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .categories .card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .categories .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .categories .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .categories .card h3 {
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 60%;
+            max-width: 500px;
+            border: 1px solid #c8a27a;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background: #c8a27a;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: -5px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        /* Featured Products */
+        .featured-products {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .featured-products h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .featured-products .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .featured-products .product {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .featured-products .product:hover {
+            transform: scale(1.05);
+        }
+
+        .featured-products .product img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .featured-products .product h3 {
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+
+  
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 50px;
+        }
+
+        .categories .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .categories .card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .categories .card h3 {
+            font-size: 18px;
+            margin: 15px 0;
+            color: #4a4a4a;
+        }
+
+        .categories .card:hover {
+            transform: translateY(-10px);
+        }
+
+        footer {
+            background-color: #4a4a4a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #ffd700;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shopsphere</h1>
+        <nav>
+            <ul>
+                <li><a href="girls clothing.html" target="_blank">Clothing</a>
+                    <ul>
+                        <li><a href="#long-frocks" target="_blank">Long Frocks</a></li>
+                        <li><a href="#Abayas" target="_blank">Abayas</a></li>
+                        <li><a href="#Kaftans" target="_blank">Kaftans</a></li>
+                        <li><a href="#Co-ords"target="_blank">Co-ords</a></li>
+                        <li><a href="#Embroidered" target="_blank">Embroidered</a></li>
+                        <li><a href="#Pants"target="_blank">Pants</a></li>
+                        <li><a href="#Skirts"target="_blank">Skirts</a></li>
+                        <li><a href="#Nightgowns" target="_blank">Nightgowns</a></li>
+                        <li><a href="#Hoodies"target="_blank">Hoodies and Sweatshirts</a></li>
+                        <li><a href="#other" target="_blank">Other Accessories</a></li>   
+                    
+                    </ul>
+                </li>
+                <li><a href="Shoes.html" target="_blank">Shoes</a>
+                    <ul>
+                        <li><a href="#Sneakers/Canvas" target="_blank">Sneakers/Canvas</a></li>
+                        <li><a href="#Khusa" target="_blank">Khusa</a></li>
+                        <li><a href="#Pumps" target="_blank">Pumps</a></li>
+                        <li><a href="#Slippers" target="_blank">Slippers</a></li>
+                        <li><a href="#Sandal" target="_blank">Sandals</a></li>
+                        <li><a href="#Heels" target="_blank">Heels</a></li>
+                        <li><a href="#Loafers"target="_blank">Loafers</a></li>
+                        <li><a href="#Boots" target="_blank">Boots</a></li>
+                        <li><a href="#Sport Shoes"target="_blank">Sport Shoes</a></li>
+                        <li><a href="#Wedges" target="_blank">Wedges</a></li> 
+           
+                    </ul>
+            
+                <li><a href="watch.html"target="_blank">Watches</a>
+                    <ul>
+                        <li><a href="#Luxury" target="_blank">Luxury Watches </a></li>
+                        <li><a href="#Smart" target="_blank">Smartwatch</a></li>
+                    </ul>
+                </li>
+                <li><a href="knitted.html" target="_blank">Knitted</a>
+                    <ul>
+                        <li><a href="#sweaters" target="_blank">Sweaters</a></li>
+                        <li><a href="#mittens" target="_blank">Mittens</a></li>
+                        <li><a href="#caps" target="_blank">Caps</a></li>
+                        <li><a href="#other" target="_blank">Other accessories </a></li>
+                    </ul>
+                </li>
+                <li><a href="bags.html" target="_blank">Bags</a>
+                    <ul>
+                        <li><a href="#handbag" target="_blank">Handbags</a></li>
+                        <li><a href="#clutch" target="_blank">Clutch Bags</a></li>
+                        <li><a href="#laptop" target="_blank">Laptop Bags</a></li>
+                        <li><a href="#bagpack" target="_blank"> Bagpack </a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="health and beauty.html" target="_blank">Health and Beauty</a>
+                    <ul>
+                        <li><a href="#medical" target="_blank">Medical Supplies</a></li>
+                        <li><a href="#Persnol Care" target="_blank">Personal Care</a></li>
+                        <li><a href="#Skin Care" target="_blank">Skin Care</a></li>
+                        <li><a href="#food" target="_blank"> Healthy Food and Beverages</a></li>
+                    </ul>
+                </li>
+                <li><a href="perfumes.html" target="_blank">Perfumes</a>
+                    <ul>
+                        <li><a href="#Mists" target="_blank">Mists</a></li>
+                        <li><a href="#Body" target="_blank">Body Spray</a></li>
+                        <li><a href="#Cologne" target="_blank">Cologne</a></li>
+                        <li><a href="#Niche" target="_blank">Niche Perfumes </a></li>
+                    </ul>
+                </li>
+                <li><a href="makeup.html" target="_blank">Makeup and Jewellary</a>
+                    <ul>
+                        <li><a href="makeup.html" target="_blank">Maakeup</a></li>
+                        <li><a href="#Jewellary" target="_blank" >Jewellary</a></li>
+                    </ul>
+                </li>
+               
+                <li><a href="home and decor.html">Home Decor </a>
+                    <ul>
+                        <li><a href="#craft">Decor and Crafts</a></li>
+                        <li><a href="#light">Lighting</a></li>
+                        <li><a href="#curtain">Curtains</a></li>
+                        <li><a href="#bedding">Bedding</a></li>
+                    </ul>
+                </li>
+                <li><a href="books.html">Books</a>
+                    <ul>
+                        <li><a href="#islam">Islamic </a></li>
+                        <li><a href="#fiction">Fictional</a></li>
+                        <li><a href="#non">Non=Fictional</a></li>
+                        <li><a href="#fantasy">Fantasy </a></li>
+                        <li><a href="#urdu">Urdu Novels</a></li>                     
+                      </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>Welcome to ShopSphere</h2>
+        <p>Your one-stop shop for everything you love.</p>
+        <button> <a href="girls clothing.html" target="_blank" >Explore Now</a> </button>
+    </div>
+    <section class="search-bar">
+        <input type="text" placeholder="Search for products...">
+        <button>Search</button>
+    </section>
+    
+    </section>
+    <section class="categories">
+        <h2>Shop by Category</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="I love fashion!.jpg" alt="Girls Clothing">
+                <h3>Clothing</h3>
+            </div>
+            <div class="card">
+                <img src="Converse Jack Purcell Low Top Sneaker (Men) _ Nordstrom.jpg" alt="Shoes">
+                <h3>Shoes</h3>
+            </div>
+    
+            <div class="card">
+                <img src="Złoty zegarek Miugo - minimalistyczny design i polska produkcja.jpg" alt="Watches">
+                <h3>Watches</h3>
+            </div>
+            <div class="card">
+                <img src="download (4).jpg" alt="Knitted Accessories">
+                <h3>Knitted Accessories</h3>
+            </div>
+           
+            <div class="card">
+                <img src="Brown raffia bag.jpg" alt="Bags">
+                <h3>Bags</h3>
+            </div>
+            <div class="card">
+                <img src="Post by Fixwal.jpg" alt="Health and Beauty">
+                <h3>Health and Beauty</h3>
+            </div>
+         
+            <div class="card">
+                <img src="perfume.jpg" alt="Perfumes">
+                <h3>Perfumes</h3>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/d5/06/a5/d506a5c643c0b0db9cf41dd462b14805.jpg" alt="Makeup and Jewellary">
+                <h3>Makeup and Jewellary</h3>
+            </div>
+            <div class="card">
+                <img src="How To Decorate With Mirrors (15+ Mirror Decorating Ideas).jpg" alt="Home Decor">
+                <h3>Home Decor</h3>
+            </div>
+            <div class="card">
+                <img src="Books.jpg" alt="Books">
+                <h3>Books</h3>
+            </div>
+           
+        </div>
+    </section>
+    
+    <section class="featured-products">
+        <h2>Featured Products</h2>
+        <div class="grid">
+        
+            <div class="product">
+                <div class="product-image">
+                    <img src="product1.avif" alt="Product 1">
+                    <div class="product-badge">New</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name"> Modest wear</h3>
+                    <div class="product-rating">
+                        <span class="rating-stars">⭐⭐⭐⭐☆</span> (120 reviews)
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 2,499</span>
+                        <span class="sale-price">PKR 1,999</span>
+                    </div>
+                    <button class="btn">Add to Cart</button>
+                </div>
+            </div>
+    
+            
+            <div class="product">
+                <div class="product-image">
+                    <img src="product2.webp" alt="Product 2">
+                    <div class="product-badge">Sale</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Royal Plum Frock</h3>
+                    <div class="product-rating">
+                        <span class="rating-stars">⭐⭐⭐⭐⭐</span> (50 reviews)
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 3,499</span>
+                        <span class="sale-price">PKR 2,999</span>
+                    </div>
+                    <button class="btn">Add to Cart</button>
+                </div>
+            </div>
+    
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://i.pinimg.com/736x/87/dd/83/87dd833081f5b6b0b36e50bf7d0e31c0.jpg" alt="Product 3">
+                    <div class="product-badge">Hot</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Wooden Wall Art</h3>
+                    <div class="product-rating">
+                        <span class="rating-stars">⭐⭐⭐⭐☆</span> (80 reviews)
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 4,499</span>
+                        <span class="sale-price">PKR 3,999</span>
+                    </div>
+                    <button class="btn">Add to Cart</button>
+                </div>
+            </div>
+    
+            <!-- Product 4 -->
+            <div class="product">
+                <div class="product-image">
+                    <img src="product4.jpg" alt="Product 4">
+                    <div class="product-badge">Best Seller</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Product 4</h3>
+                    <div class="product-rating">
+                        <span class="rating-stars">⭐⭐⭐⭐⭐</span> (200 reviews)
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 5,499</span>
+                        <span class="sale-price">PKR 4,499</span>
+                    </div>
+                    <button class="btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Shopsphere. All rights reserved. <a href="privacy policy.html" target="_blank"> </a>Privacy Policy</a> | <a href="terms.html" target="_blank">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

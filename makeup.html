@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clothing Page</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Playfair+Display&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f4e6;
+            color: #3e2a2a;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }   
+        header {
+            background-color: #d3c2b0;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+      
+        header h2 {
+            font-size: 30px;
+            font-weight: normal;
+            margin: 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .header-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .header-icons i:hover {
+            color: #e1b28b;
+        }
+        
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    background-image: url('https://i.pinimg.com/736x/23/be/e7/23bee776a4209f812a61d1d62016d7e8.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    align:Right;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.hero-buttons .btn:hover {
+    background-color: #d9534f;
+    transform: scale(1.1);
+}
+.hero-buttons .btn {
+    background-color: #e1b28b;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    background-color: #d9534f;
+    transform: scale(1.1);
+}
+
+.section-banner {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.banner-image {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            color: white;
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            overflow-y: auto;
+            padding: 20px;
+            z-index: 1000;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #5e3c23;
+            font-size: 1rem;
+            padding: 5px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #a67856;
+        }
+
+        .active {
+            color: #cfa582;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+        }
+        .category-section {
+            margin-bottom: 50px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .category-header {
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e1b28b;
+            padding-bottom: 10px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #e1b28b;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .product-image {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-info {
+            margin-top: 10px;
+        }
+        .product-name {
+            
+            font-size: 20px;
+            font-weight: bold;
+            color: #3e2a2a;
+        }
+        .product-price {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-price .original-price {
+    text-decoration: line-through;
+    color: #a0a0a0;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.product-price .sale-price {
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 18px;
+}
+        .product-sizes label {
+            margin-right: 10px;
+            font-weight: 400;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e1b28b;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+            animation: bounce 2s infinite;
+        }
+        .sale {
+            background-color: red;
+        }
+        .btn-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            background-color: #3e2a2a;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #e1b28b;
+           color: #3e2a2a;
+           transform: scale(1.1);
+        }
+
+        footer {
+    background-color: #d3c2b0;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+        }
+       
+footer .social-icons i {
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+footer .social-icons i:hover {
+    color: #e1b28b;
+}
+
+        @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+        @media screen and (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo"><strong>ShopSphere</strong></div>
+    <center><h2><b> Makeup and Jewellary ITEMS COLLECTION</b></h2></center>
+    <div class="header-icons">
+        <i class="fa fa-search"></i>
+        <i class="fa fa-user"></i>
+        <i class="fa fa-shopping-cart"></i>
+    </div>
+</header>
+<div class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Welcome to ShopSphere</h1>
+        <p class="hero-subtitle">Discover the latest trends in fashion and lifestyle</p>
+        <div class="hero-buttons">
+            <a href="#shop-now" class="btn">Shop Now</a>
+            <a href="#categories" class="btn">Explore Categories</a>
+        </div>
+    </div>
+</div>
+
+<div class="sidebar">
+    <ul>
+        <li><a href="#makeup" target="_blank">Maakeup</a></li>
+        <li><a href="#Jewellary" target="_blank" >Jewellary</a></li>
+    </ul>
+</div>
+
+
+<div class="content">
+    <div class="category-section" id="makeup">
+        <div class="category-header"><center><h2>Makeup</h2></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge new-arrival">New Arrival</div>
+                <img src="https://i.pinimg.com/736x/63/5b/6a/635b6aaeb8773ef1e46d29baf6af72dc.jpg" alt="Matte Foundation" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Matte Foundation</div>
+                    <div class="product-price">PKR 2,499</div>
+                    <p>Full coverage with a matte finish</p>
+                    <div class="product-sizes">
+                        <label><input type="radio" name="size1"> 30ml</label>
+                        <label><input type="radio" name="size1"> 50ml</label>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge best-seller">Best Seller</div>
+                <img src="https://i.pinimg.com/736x/ec/62/eb/ec62eb2522766a0b669db966f2dbcef6.jpg" alt="Eyeshadow Palette" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Eyeshadow Palette - Nude Shades</div>
+                    <div class="product-price">PKR 3,499</div>
+                    <p>Includes 12 versatile shades for day and night looks</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge sale">Sale</div>
+                <img src="https://i.pinimg.com/736x/f3/1c/53/f31c535e9f2b0afe459c5245e7cddad9.jpg" alt="Matte Lipstick" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Matte Lipstick - Bold Red</div>
+                    <div class="product-price">
+                        <span class="original-price">PKR 1,999</span>
+                        <span class="sale-price">PKR 1,399</span>
+                    </div>
+                    <p>Long-lasting, full-coverage matte finish</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="badge free-shipping">Free Shipping</div>
+                <img src="https://i.pinimg.com/736x/e6/d8/b1/e6d8b18922c853081441cc5987de3393.jpg" alt="Gel Nail Polish" class="product-image">
+                <div class="product-info">
+                    <div class="product-name">Gel Nail Polish - Ocean Blue</div>
+                    <div class="product-price">PKR 899</div>
+                    <p>Chip-resistant and long-lasting gel finish</p>
+                    <div class="btn-group">
+                        <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                        <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+    <div class="category-section" id="Jewellary"data-aos="fade-up" data-aos-duration="1000">
+        <div class="category-header"><center><strong><h2>Jewellary</h2></strong></center></div>
+        <div class="product-grid">
+            <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/9f/04/f8/9f04f8d7672a706279f2a69f7dd41997.jpg" alt="Necklace" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Personalized Necklace</div>
+                        <div class="product-price">PKR 6,499</div>
+                        <p>Sold: 50 | Remaining: 100</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+        
+               
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/34/02/85/340285b6fbeb1a0a41cf0933a094e24c.jpg" alt="Earrings" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Stud Earrings</div>
+                        <div class="product-price">PKR 2,199</div>
+                        <p>Sold: 120 | Remaining: 50</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+        
+              
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/32/f2/35/32f235bce95d022888684d863b56f5b0.jpg" alt="Rings" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Engagement Ring</div>
+                        <div class="product-price">PKR 12,999</div>
+                        <p>Sold: 10 | Remaining: 15</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+        
+             
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/8f/f0/d6/8ff0d62ef0000893e762f4ddc0ecb96e.jpg" alt="Bracelet" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Charm Bracelet</div>
+                        <div class="product-price">PKR 3,499</div>
+                        <p>Sold: 80 | Remaining: 40</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+        
+               
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/99/08/fd/9908fdbd8015ebe03eea69fcb6c23efc.jpg" alt="Anklet" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Moon Anklet</div>
+                        <div class="product-price">PKR 1,499</div>
+                        <p>Sold: 200 | Remaining: 60</p>
+                        <div class="btn-group">
+                            <button class="btn"><i class="fa fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn"><i class="fa fa-shopping-bag"></i> Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+        
+                
+        </div>
+     </div>
+</div>
+ 
+<footer>
+    <div class="footer-content">
+        <p>© 2025 ShopSphere. All Rights Reserved.</p>
+        <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+        </div>
+    </div>
+</footer>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
